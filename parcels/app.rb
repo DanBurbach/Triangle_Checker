@@ -19,11 +19,17 @@ get ('/output') do
   @height = params.fetch("height")
   @weight = params.fetch("weight")
   # @distance = params.fetch("distance").to_i
+  @shipfromlat = params.fetch("shipfromlat")
+  @shipfromlong = params.fetch("shipfromlong")
+  @shiptolat = params.fetch("shiptolat")
+  @shiptolong = params.fetch("shiptolong")
 
 
+  @shipfrom = Loc::Location[@shipfromlat.to_i, @shipfromlong.to_i]
+  @shipto = Loc::Location[@shiptolat.to_i, @shiptolong.to_i]
 
-  @shipfrom = Loc::Location[40.7, -73.9]
-  @shipto = Loc::Location[45.5, -122.6]
+  # @shipfrom = Loc::Location[40.7, -73.9]
+  # @shipto = Loc::Location[45.5, -122.6]
 
   parcel = Parcel.new(@length, @width, @height, @weight, @shipfrom, @shipto, @distance)
   @volume = parcel.volume
@@ -32,7 +38,7 @@ get ('/output') do
   # @distance = parcel.shipdistance
   @distance = ((@shipfrom.distance_to(@shipto))/1609.344).floor
   parcel.distance = @distance
-  @price =  @volume.to_i * @weight.to_i * (0.01*(@distance))
+  @price =  (@volume.to_i * @weight.to_i * (0.001*(@distance))).floor
   erb(:output)
-  
+
 end
