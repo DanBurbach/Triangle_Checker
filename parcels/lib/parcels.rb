@@ -20,22 +20,4 @@ class Parcel
     end
   end
 
-  # def price
-  #   if self.distance == 1
-  #     self.volume * self.weight * 0.25
-  #   elsif self.distance == 2
-  #     self.volume * self.weight * 0.5
-  #   elsif self.distance == 5
-  #     self.volume * self.weight * 1.25
-  #   elsif self.distance == 20
-  #     self.volume * self.weight * 5.75
-  #   elsif self.distance == 100
-  #     self.volume * self.weight * 20.45
-  #   end
-  # end
-
-  def checkdistance
-
-  end
-
 end

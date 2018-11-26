@@ -28,9 +28,11 @@ get ('/output') do
   parcel = Parcel.new(@length, @width, @height, @weight, @shipfrom, @shipto, @distance)
   @volume = parcel.volume
   @weight = parcel.weight
-  @price = parcel.price
   # @distance = parcel.distance
   # @distance = parcel.shipdistance
-  @distance = @shipfrom.distance_to(@shipto)
+  @distance = ((@shipfrom.distance_to(@shipto))/1609.344).floor
+  parcel.distance = @distance
+  @price =  @volume.to_i * @weight.to_i * (0.01*(@distance))
   erb(:output)
+  
 end
