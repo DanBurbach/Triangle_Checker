@@ -1,8 +1,9 @@
 source('https://rubygems.org')
 
 # gem('rubygems')
-gem('loc')
-gem('sinatra')
-gem('sinatra-contrib')
-gem('rspec')
-gem('pry')
+gem 'geokit', '~> 1.13.1'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'rspec'
+gem 'pry'
+gem 'treetop', '~> 1.6', '>= 1.6.10'
